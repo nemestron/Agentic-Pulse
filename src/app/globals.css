@@ -1,0 +1,41 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme - High Contrast Premium Monochrome */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --border: 0 0% 89.8%;
+    /* Primary Accent: Premium Emerald/Teal (Strictly no blue/purple) */
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 98%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Dark Theme - Deep Premium Monochrome */
+      --background: 0 0% 9%;
+      --foreground: 0 0% 98%;
+      --card: 0 0% 9%;
+      --card-foreground: 0 0% 98%;
+      --border: 0 0% 14.9%;
+      /* Primary Accent: Premium Emerald/Teal */
+      --primary: 160 84% 39%;
+      --primary-foreground: 0 0% 9%;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[hsl(var(--border))];
+  }
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
