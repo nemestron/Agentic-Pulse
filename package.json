@@ -9,11 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@langchain/core": "^1.1.39",
+    "@langchain/groq": "^1.2.0",
+    "@langchain/langgraph": "^1.2.7",
     "@prisma/client": "5.14.0",
     "@tremor/react": "^3.18.7",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "langsmith": "^0.5.16",
     "lucide-react": "^1.7.0",
     "next": "16.2.2",
     "next-auth": "5.0.0-beta.30",
