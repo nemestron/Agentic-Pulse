@@ -3,9 +3,8 @@ import type { Config } from "tailwindcss"
 const config = {
   darkMode: "class",
   content: [
-    './src/pages/**/*.{ts,tsx,mdx}',
-    './src/components/**/*.{ts,tsx,mdx}',
-    './src/app/**/*.{ts,tsx,mdx}',
+    './src/**/*.{ts,tsx,mdx}',
+    './node_modules/@tremor/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -17,6 +16,64 @@ const config = {
         surface: 'var(--surface)',
         success: 'var(--success)',
         error: 'var(--error)',
+        tremor: {
+          brand: {
+            faint: 'var(--surface)',
+            muted: 'var(--border)',
+            subtle: 'var(--accent)',
+            DEFAULT: 'var(--accent)',
+            emphasis: 'var(--foreground)',
+            inverted: 'var(--background)',
+          },
+          background: {
+            muted: 'var(--surface)',
+            subtle: 'var(--background)',
+            DEFAULT: 'var(--background)',
+            emphasis: 'var(--surface)',
+          },
+          border: {
+            DEFAULT: 'var(--border)',
+          },
+          ring: {
+            DEFAULT: 'var(--accent)',
+          },
+          content: {
+            subtle: 'var(--border)',
+            DEFAULT: 'var(--foreground)',
+            emphasis: 'var(--accent)',
+            strong: 'var(--foreground)',
+            inverted: 'var(--background)',
+          },
+        },
+        'dark-tremor': {
+          brand: {
+            faint: 'var(--surface)',
+            muted: 'var(--border)',
+            subtle: 'var(--accent)',
+            DEFAULT: 'var(--accent)',
+            emphasis: 'var(--foreground)',
+            inverted: 'var(--background)',
+          },
+          background: {
+            muted: 'var(--surface)',
+            subtle: 'var(--background)',
+            DEFAULT: 'var(--background)',
+            emphasis: 'var(--surface)',
+          },
+          border: {
+            DEFAULT: 'var(--border)',
+          },
+          ring: {
+            DEFAULT: 'var(--accent)',
+          },
+          content: {
+            subtle: 'var(--border)',
+            DEFAULT: 'var(--foreground)',
+            emphasis: 'var(--accent)',
+            strong: 'var(--foreground)',
+            inverted: 'var(--background)',
+          },
+        }
       },
     },
   },
