@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #F8F4ED;
+    --foreground: #1F2326;
+    --accent: #B89F6F;
+    --border: #5C5F5F;
+    --surface: #EBE4D8;
+    --success: #2E4A3C;
+    --error: #5C2C2C;
+  }
+  .dark {
+    --background: #111111;
+    --foreground: #F8F4ED;
+    --accent: #A37E5E;
+    --border: #3F3F3F;
+    --surface: #1A1A1A;
+    --success: #2A4A3A;
+    --error: #4A2525;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
