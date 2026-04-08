@@ -9,7 +9,6 @@ export async function GET() {
     const session = await auth();
     if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    // Parallelize high-performance database aggregations
     const [
       totalArticles,
       agentRuns,
@@ -31,7 +30,6 @@ export async function GET() {
         orderBy: { _count: { sourceDomain: 'desc' } },
         take: 7
       }),
-      // Fetch dates for the last 30 days of processed posts
       prisma.post.findMany({
         where: { 
           createdAt: { gte: new Date(new Date().setDate(new Date().getDate() - 30)) },
@@ -39,7 +37,6 @@ export async function GET() {
         },
         select: { createdAt: true }
       }),
-      // Fetch latest 10 articles for the live feed
       prisma.post.findMany({
         where: { agentScore: { not: null } },
         orderBy: { createdAt: 'desc' },
@@ -48,20 +45,20 @@ export async function GET() {
       })
     ]);
 
-    // Process Queue Metrics
-    const pendingCount = queueCounts.find(q => q.status === "PENDING")?._count.status || 0;
-    const publishedCount = queueCounts.find(q => q.status === "PUBLISHED")?._count.status || 0;
-    const rejectedCount = queueCounts.find(q => q.status === "REJECTED")?._count.status || 0;
+    // Explicit structural types to immunize against Vercel compiler failures
+    type QueueGroup = { status: string; _count: { status: number } };
+    const pendingCount = queueCounts.find((q: QueueGroup) => q.status === "PENDING")?._count.status || 0;
+    const publishedCount = queueCounts.find((q: QueueGroup) => q.status === "PUBLISHED")?._count.status || 0;
+    const rejectedCount = queueCounts.find((q: QueueGroup) => q.status === "REJECTED")?._count.status || 0;
 
-    // Process Top Sources
-    const topSources = topSourcesRaw.map(s => ({
+    type SourceGroup = { sourceDomain: string; _count: { sourceDomain: number } };
+    const topSources = topSourcesRaw.map((s: SourceGroup) => ({
       name: s.sourceDomain,
       "Articles": s._count.sourceDomain
     }));
 
-    // Process Daily Run History
     const historyMap: Record<string, number> = {};
-    recentPosts.forEach(p => {
+    recentPosts.forEach((p: { createdAt: Date }) => {
       const d = p.createdAt.toISOString().split('T')[0];
       historyMap[d] = (historyMap[d] || 0) + 1;
     });
