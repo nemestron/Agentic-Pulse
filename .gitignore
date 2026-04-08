@@ -46,3 +46,6 @@ next-env.d.ts
 .env.production
 pnpm-debug.log
 /src/generated/prisma
+
+vercel_ready.env
+*.env*

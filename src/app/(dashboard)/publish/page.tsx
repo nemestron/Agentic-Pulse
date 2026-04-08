@@ -14,7 +14,8 @@ export default async function PublishPage(props: { searchParams: Promise<{ tab?:
   });
   
   if (unprocessed.length > 0) {
-    await Promise.all(unprocessed.map(p => 
+    // Explicitly typed to prevent Vercel cloud compiler inference failures
+    await Promise.all(unprocessed.map((p: { id: string }) => 
       prisma.publishQueue.create({ data: { postId: p.id, status: "PENDING" } })
     ));
   }
