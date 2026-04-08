@@ -119,7 +119,7 @@ async function persistResults(state: AgentState): Promise<Partial<AgentState>> {
   for (const article of state.selectedArticles) {
     try {
       await prisma.post.update({
-        where: { id: article.id },
+        where: { id: (article as unknown as { id: string }).id },
         data: {
           agentScore: article.aiScore,
           agentSummary: article.aiSummary,
