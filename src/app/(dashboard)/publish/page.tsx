@@ -51,7 +51,7 @@ export default async function PublishPage(props: { searchParams: Promise<{ tab?:
 
       <div className="grid gap-5">
         {items.length === 0 && <div className="p-12 text-center text-border bg-surface rounded-xl border border-border shadow-sm font-medium">No items found in this queue state.</div>}
-        {items.map(item => (
+        {items.map((item: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => (
           <div key={item.id} className={`p-6 bg-surface border rounded-xl flex flex-col lg:flex-row justify-between gap-6 shadow-sm border-l-4 ${borderMap[activeTab]}`}>
             <div className="flex-1 space-y-3">
               <h3 className="text-xl font-bold text-foreground leading-snug">{item.editedTitle || item.post.title}</h3>
