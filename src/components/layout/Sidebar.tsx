@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Newspaper, Activity, Send, Settings, MessageCircle } from "lucide-react";
+import { LayoutDashboard, Newspaper, Send, Settings, MessageCircle } from "lucide-react";
 
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard, external: false },
   { name: "News Feed", href: "/news", icon: Newspaper, external: false },
-  { name: "Agent Runs", href: "/agents", icon: Activity, external: false },
   { name: "Telegram Channel", href: "https://t.me/agenticpulsenews", icon: MessageCircle, external: true },
   { name: "Publish", href: "/publish", icon: Send, external: false },
   { name: "Settings", href: "/settings", icon: Settings, external: false },
@@ -19,8 +18,10 @@ export default function Sidebar() {
   return (
     <div className="w-64 h-screen border-r border-border bg-surface flex flex-col justify-between shrink-0 overflow-y-auto">
       <div>
-        <div className="h-16 flex items-center px-6 border-b border-border">
-          <h1 className="text-2xl font-black text-accent tracking-tight">Agentic Pulse</h1>
+        <div className="h-16 flex items-center px-6 border-b border-border hover:bg-background/50 transition-colors">
+          <Link href="/dashboard" className="w-full">
+            <h1 className="text-2xl font-black text-accent tracking-tight">Agentic Pulse</h1>
+          </Link>
         </div>
         <nav className="p-4 space-y-1.5">
           {navItems.map((item) => {
