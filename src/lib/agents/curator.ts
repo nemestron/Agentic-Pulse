@@ -59,7 +59,7 @@ async function scoreArticles(state: AgentState): Promise<Partial<AgentState>> {
         }
       });
     } catch (e) {
-      console.error(`Scoring failed for article ${article.id}`, e);
+      console.error(`Scoring failed for article ${(article as unknown as { id: string }).id}`, e);
     }
   }
   return { scoredArticles };
@@ -93,7 +93,7 @@ async function summarizeArticles(state: AgentState): Promise<Partial<AgentState>
         aiCategory: result.category
       });
     } catch (e) {
-      console.error(`Summarization failed for article ${article.id}`, e);
+      console.error(`Summarization failed for article ${(article as unknown as { id: string }).id}`, e);
     }
   }
   return { summarizedArticles };
@@ -127,7 +127,7 @@ async function persistResults(state: AgentState): Promise<Partial<AgentState>> {
         }
       });
     } catch (e) {
-      console.error(`Persistence failed for article ${article.id}`, e);
+      console.error(`Persistence failed for article ${(article as unknown as { id: string }).id}`, e);
     }
   }
   return {};
