@@ -43,7 +43,7 @@ async function scoreArticles(state: AgentState): Promise<Partial<AgentState>> {
     try {
       const response = await scorerLLM.invoke([
         new SystemMessage(SCORING_SYSTEM_PROMPT),
-        new HumanMessage(`Title: ${(article as { title: string; body: string }).title}\n\nContent: ${(article as { title: string; body: string }).body}`)
+        new HumanMessage(`Title: ${(article as unknown as { title: string; body: string }).title}\n\nContent: ${(article as unknown as { title: string; body: string }).body}`)
       ], { response_format: { type: "json_object" } });
 
       const result = JSON.parse(response.content as string);
@@ -81,7 +81,7 @@ async function summarizeArticles(state: AgentState): Promise<Partial<AgentState>
     try {
       const response = await summarizerLLM.invoke([
         new SystemMessage(SUMMARIZER_SYSTEM_PROMPT),
-        new HumanMessage(`Title: ${(article as { title: string; body: string }).title}\n\nContent: ${(article as { title: string; body: string }).body}`)
+        new HumanMessage(`Title: ${(article as unknown as { title: string; body: string }).title}\n\nContent: ${(article as unknown as { title: string; body: string }).body}`)
       ], { response_format: { type: "json_object" } });
 
       const result = JSON.parse(response.content as string);
