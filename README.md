@@ -1,4 +1,4 @@
-```markdown
+
 # Agentic Pulse
 
 An AI-powered news curation and publishing platform that collects tech/AI news, processes articles through a multi-agent LangGraph pipeline, and publishes curated content to Telegram with human-in-the-loop approval workflow.
@@ -31,7 +31,9 @@ Join the Telegram channel to receive AI-curated news articles published by Agent
 ### AI Layer
 - LangGraph
 - LangChain
-- Groq API (Llama 3 70B/8B)
+- Groq API
+- Llama 3.3 70B (scoring and evaluation)
+- Llama 3.1 8B (summarization and tagging)
 - LangSmith (full tracing)
 
 ### Integrations
@@ -53,10 +55,10 @@ Join the Telegram channel to receive AI-curated news articles published by Agent
 
 - Email/password authentication with secure password hashing
 - News collection from NewsAPI.org with rate limiting and deduplication
-- Multi-node LangGraph agent pipeline for scoring, summarizing, and tagging articles
+- Multi-node LangGraph agent pipeline using Llama 3.3 70B for scoring and Llama 3.1 8B for summarization
 - Human-in-the-loop publishing workflow with approval/rejection controls
 - Telegram channel integration for automated article publishing
-- Public article pages with Open Graph metadata for social sharing
+- Public article pages at /p/[id] with Open Graph metadata for social sharing
 - Share functionality for WhatsApp, Telegram, X, Facebook, and LinkedIn
 - Analytics dashboard with KPI cards, run history charts, and source breakdowns
 - Real-time data refresh with SWR polling
@@ -67,7 +69,7 @@ Join the Telegram channel to receive AI-curated news articles published by Agent
 ## Architecture Overview
 
 1. News Collection: Native fetch requests to NewsAPI.org, normalized and stored in Neon PostgreSQL
-2. AI Processing: LangGraph pipeline with Llama 3 70B for scoring and Llama 3 8B for summarization
+2. AI Processing: LangGraph pipeline with Llama 3.3 70B for scoring and Llama 3.1 8B for summarization
 3. Publish Queue: Human review interface with edit, approve, and reject actions
 4. Output: Approved articles published to Telegram channel with formatted messages
 5. Public Sharing: Each published article has a public URL with SEO metadata for social platforms
@@ -115,7 +117,7 @@ pnpm dev
 
 ## Environment Variables
 
-Create a `.env.local` file with the following variables:
+Create a .env.local file with the following variables:
 
 ```
 DATABASE_URL=postgresql://...
@@ -146,8 +148,8 @@ pnpm tsc --noEmit # Type check with TypeScript
 
 ## Testing
 
-- Unit tests: `pnpm test --run`
-- E2E tests: `pnpm exec playwright test`
+- Unit tests: pnpm test --run
+- E2E tests: pnpm exec playwright test
 - Pre-commit hooks run lint, type check, and tests automatically
 
 ## Deployment
@@ -172,3 +174,7 @@ Built by Dhiraj Malwade
 - GitHub: https://github.com/nemestron
 - LinkedIn: https://linkedin.com/in/dhiraj-malwade-6a8385399
 
+## License
+
+This project is for portfolio demonstration purposes. See repository for license details.
+```
