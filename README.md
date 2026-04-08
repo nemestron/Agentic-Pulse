@@ -174,7 +174,3 @@ Built by Dhiraj Malwade
 - GitHub: https://github.com/nemestron
 - LinkedIn: https://linkedin.com/in/dhiraj-malwade-6a8385399
 
-## License
-
-This project is for portfolio demonstration purposes. See repository for license details.
-```
