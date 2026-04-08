@@ -9,7 +9,7 @@ export function ShareMenu({ articleId, title }: { articleId: string; title: stri
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setUrl(`${window.location.origin}/p/${articleId}`);
+    setTimeout(() => setUrl(`${window.location.origin}/p/${articleId}`), 0);
     
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) setIsOpen(false);

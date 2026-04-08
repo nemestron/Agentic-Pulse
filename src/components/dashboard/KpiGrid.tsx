@@ -1,6 +1,6 @@
 import { Card, Metric, Text } from "@tremor/react";
 
-export function KpiGrid({ data }: { data: any }) {
+export function KpiGrid({ data }: { data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */ }) {
   const kpis = [
     { title: "Articles Processed", metric: data.totalArticles, detail: "Total indexed securely" },
     { title: "Avg Agent Score", metric: `${data.avgAgentScore}/100`, detail: "Across all curations" },

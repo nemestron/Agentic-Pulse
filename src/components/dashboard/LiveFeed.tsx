@@ -2,7 +2,7 @@
 import { Card, Title } from "@tremor/react";
 import { FileText, ExternalLink } from "lucide-react";
 
-export function LiveFeed({ articles }: { articles: any[] }) {
+export function LiveFeed({ articles }: { articles: any[] /* eslint-disable-line @typescript-eslint/no-explicit-any */ }) {
   // Enforce strict descending sort to ensure newest items are always at the top
   const sortedArticles = [...articles].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 

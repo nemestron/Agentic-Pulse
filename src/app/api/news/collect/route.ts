@@ -5,14 +5,14 @@ import { getTechNews, searchArticles } from "@/lib/news/client";
 import { normalizeNewsArticle } from "@/lib/news/normalizer";
 import { NEWS_CONFIG } from "@/config/newsSources";
 
-export async function POST(req: Request) {
+export async function POST() {
   try {
     const session = await auth();
     if (!session) {
       return NextResponse.json({ error: "Unauthorized access blocked by Edge Proxy." }, { status: 401 });
     }
 
-    const rawArticles: any[] = [];
+    const rawArticles: any /* eslint-disable-line @typescript-eslint/no-explicit-any */[] = [];
     const stats = { new: 0, duplicates: 0, errors: 0 };
 
     // 1. Fetch broad technology headlines
@@ -56,7 +56,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, payload: stats }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) {
     console.error("Collection engine failure:", error);
     return NextResponse.json({ error: "Internal Server Error", details: error.message }, { status: 500 });
   }

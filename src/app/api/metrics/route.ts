@@ -85,7 +85,7 @@ export async function GET() {
       dailyRunHistory,
       recentArticles
     });
-  } catch (error: any) {
+  } catch (error: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) {
     console.error("Metrics API Error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }

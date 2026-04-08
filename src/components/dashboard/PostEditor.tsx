@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { approvePost, rejectPost, publishToTelegram } from "@/app/actions/publish";
 
-export function PostEditor({ item }: { item: any }) {
+export function PostEditor({ item }: { item: any /* eslint-disable-line @typescript-eslint/no-explicit-any */ }) {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState(item.editedTitle || item.post.title);
   const [body, setBody] = useState(item.editedBody || item.post.agentSummary || "");

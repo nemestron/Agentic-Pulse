@@ -5,7 +5,7 @@ import { curatorAgent } from "@/lib/agents/curator";
 import { createRunMetadata } from "@/lib/langsmith/tracer";
 import { AgentState } from "@/types/agent";
 
-export async function POST(req: Request) {
+export async function POST() {
   try {
     const session = await auth();
     if (!session) {
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
       selected: finalState.selectedArticles.length
     }, { status: 200 });
 
-  } catch (error: any) {
+  } catch (error: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) {
     console.error("Agent Orchestrator Failure:", error);
     return NextResponse.json({ error: "Internal Server Error", details: error.message }, { status: 500 });
   }

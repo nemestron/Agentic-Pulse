@@ -37,7 +37,7 @@ export default async function PublishPage(props: { searchParams: Promise<{ tab?:
     <div className="space-y-8 max-w-6xl mx-auto">
       <div>
         <h1 className="text-4xl font-black text-accent tracking-tight">Editorial Queue</h1>
-        <p className="text-border mt-2 text-sm">Review, edit, and publish the AI's curated feed directly to Telegram.</p>
+        <p className="text-border mt-2 text-sm">Review, edit, and publish the AI&apos;s curated feed directly to Telegram.</p>
       </div>
       
       <div className="flex gap-2 border-b border-border pb-px">

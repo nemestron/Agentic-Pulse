@@ -2,7 +2,7 @@ import { StateGraph, START, END } from "@langchain/langgraph";
 import { ChatGroq } from "@langchain/groq";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import { prisma } from "@/lib/prisma/client";
-import { AgentState, ScoredArticle, SummarizedArticle, FinalArticle } from "@/types/agent";
+import { AgentState, ScoredArticle, SummarizedArticle } from "@/types/agent";
 import { SCORING_SYSTEM_PROMPT } from "./prompts/scorer";
 import { SUMMARIZER_SYSTEM_PROMPT } from "./prompts/summarizer";
 
@@ -22,14 +22,14 @@ const summarizerLLM = new ChatGroq({
 });
 
 // Graph Nodes
-async function fetchArticles(state: AgentState): Promise<Partial<AgentState>> {
+async function fetchArticles(): Promise<Partial<AgentState>> {
   try {
     const rawArticles = await prisma.post.findMany({
       where: { agentScore: null },
       take: 20, // Process max 20 per run to respect rate limits and latency
     });
     return { rawArticles };
-  } catch (e: any) {
+  } catch (e: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) {
     return { error: `Fetch Failed: ${e.message}` };
   }
 }

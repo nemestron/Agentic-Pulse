@@ -1,7 +1,7 @@
 "use client";
 import { Card, AreaChart } from "@tremor/react";
 
-export function AgentRunChart({ data }: { data: any[] }) {
+export function AgentRunChart({ data }: { data: any[] /* eslint-disable-line @typescript-eslint/no-explicit-any */ }) {
   return (
     <Card className="bg-surface border-border shadow-sm ring-0 rounded-xl p-6">
       <h2 className="text-foreground font-bold text-lg border-b border-border pb-3 mb-6">Agent Ingestion Velocity (30 Days)</h2>

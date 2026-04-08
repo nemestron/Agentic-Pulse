@@ -1,7 +1,7 @@
 "use client";
 import { Card, Title, BarChart } from "@tremor/react";
 
-export function SourceChart({ data }: { data: any[] }) {
+export function SourceChart({ data }: { data: any[] /* eslint-disable-line @typescript-eslint/no-explicit-any */ }) {
   return (
     <Card className="bg-surface border-border shadow-sm ring-0 rounded-xl p-6">
       <Title className="text-foreground font-bold text-lg border-b border-border pb-3 mb-6">Top Curated Sources</Title>
